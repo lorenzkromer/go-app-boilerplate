@@ -1,0 +1,11 @@
+App:
+  Name: example
+
+Database:
+  User: "postgres"
+  Password: "postgres"
+  Host: "localhost"
+  Port: 5432
+  Name: "example-db"
+  SslMode: "disable"
+  MaxOpenConnections: 10

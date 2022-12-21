@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  example-db:
+    image: postgres
+    container_name: "example-db"
+    ports:
+      - 5432:5432
+    volumes:
+      - ${PWD}/pgdata:/var/lib/postgresql/data
+      # remove this line if you don't care about tables and data, it is only executed if no data exists
+      - ${PWD}/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: example-db
+
+  example-app:
+    image: ghcr.io/lorenzkromer/go-app-boilerplate
+    container_name: "example-app"
+    depends_on:
+      - "example-db"
+    volumes:
+      - ${PWD}/config/docker:/config
