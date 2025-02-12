@@ -25,3 +25,5 @@ pgdata
 docker-entrypoint-initdb.d
 .go
 .idea/
+
+.vscode/
